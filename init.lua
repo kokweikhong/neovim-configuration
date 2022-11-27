@@ -1,0 +1,10 @@
+require("plugins")
+require("options")
+require("fzf")
+require("language")
+require("autocomplete")
+require("treesitter")
+require("whitespace")
+require("todocomment")
+
+require('Comment').setup()

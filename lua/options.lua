@@ -9,7 +9,8 @@ dracula.setup({
   },
 })
 
-vim.cmd[[colorscheme dracula]]
+vim.o.termguicolors = true
+vim.cmd("colorscheme dracula")
 
 
 vim.g.mapleader = " "
@@ -23,7 +24,6 @@ vim.o.fileencoding = "utf-8"
 vim.o.cmdheight = 2
 vim.o.splitbelow = true
 vim.o.splitright = true
-vim.o.termguicolors = true
 vim.o.conceallevel = 0
 vim.o.showtabline = 2
 vim.o.showmode = false
@@ -44,6 +44,7 @@ vim.o.softtabstop = 4
 vim.bo.softtabstop = 4
 vim.o.shiftwidth = 4
 vim.bo.shiftwidth = 4
+--
 vim.wo.wrap = false
 vim.wo.number = true
 vim.wo.cursorline = true
@@ -93,16 +94,20 @@ vim.g.netrw_winsize = 30
 vim.g.netrw_banner = 0
 vim.api.nvim_set_keymap("n", "<F2>", ":Lexplore<CR>", { noremap = true, silent = true })
 
--- remove whitespace on save
--- cmd [[au BufWritePre * :%s/\s\+$//e]]
---
--- vim.api.nvim_create_autocmd({ "BufWritePre" }, {
---   pattern = { "*" },
---   command = [[%s/\s\+$//e]],
--- })
+
+vim.api.nvim_create_autocmd({ "BufWritePre" }, {
+  pattern = { "*" },
+  command = [[%s/\s\+$//e]],
+})
+
+
+vim.api.nvim_create_autocmd({ "BufEnter" }, {
+    pattern = { "*" },
+    command = "set fo-=c fo-=r fo-=o"
+})
 
 -- don't auto commenting new lines
-vim.cmd [[au BufEnter * set fo-=c fo-=r fo-=o]]
+-- vim.cmd [[au BufEnter * set fo-=c fo-=r fo-=o]]
 
 -- remove line lenght marker for selected filetypes
 vim.cmd [[autocmd FileType text,markdown,html,xhtml,javascript setlocal cc=0]]

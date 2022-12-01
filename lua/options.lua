@@ -1,4 +1,16 @@
+local dracula = require("dracula")
+dracula.setup({
+  -- colors = {
+  --   nontext = "#FF5555",
+  -- },
+  italic_comment = true,
+  overrides = {
+      NonText = { fg = dracula.colors().comment },
+  },
+})
+
 vim.cmd[[colorscheme dracula]]
+
 
 vim.g.mapleader = " "
 
@@ -52,10 +64,10 @@ vim.api.nvim_set_option_value("colorcolumn", "79", {})
 
 -- Disable builtins plugins
 local disabled_built_ins = {
-    "netrw",
-    "netrwPlugin",
-    "netrwSettings",
-    "netrwFileHandlers",
+    -- "netrw",
+    -- "netrwPlugin",
+    -- "netrwSettings",
+    -- "netrwFileHandlers",
     "gzip",
     "zip",
     "zipPlugin",
@@ -75,6 +87,11 @@ local disabled_built_ins = {
 for _, plugin in pairs(disabled_built_ins) do
     vim.g["loaded_" .. plugin] = 1
 end
+
+vim.g.netrw_keepdir = 0
+vim.g.netrw_winsize = 30
+vim.g.netrw_banner = 0
+vim.api.nvim_set_keymap("n", "<F2>", ":Lexplore<CR>", { noremap = true, silent = true })
 
 -- remove whitespace on save
 -- cmd [[au BufWritePre * :%s/\s\+$//e]]

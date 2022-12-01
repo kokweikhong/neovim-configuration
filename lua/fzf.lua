@@ -11,7 +11,7 @@ n_keymap("<leader>ft", "tabs")
 -- vim.api.nvim_set_keymap('n', '<c-P>',
 --     "<cmd>lua require('fzf-lua').files()<CR>",
 --     { noremap = true, silent = true })
--- 
+--
 -- buffers	open buffers
 -- files	find or fd on a path
 -- oldfiles	opened files history
@@ -22,4 +22,3 @@ n_keymap("<leader>ft", "tabs")
 -- tabs	open tabs
 -- args	argument list
 n_keymap("<leader>fg", "live_grep")
-

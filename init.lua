@@ -6,5 +6,5 @@ require("autocomplete")
 require("treesitter")
 require("whitespace")
 require("todocomment")
-
+require("blanklines")
 require('Comment').setup()
